@@ -33,8 +33,9 @@ var init_screenshots = function(){
 };
 
 var init_screenshot_lightbox = function(){
+    console.log("Function called");
     (function($){
-        $(document).ready(function(){
+        $(function(){
             $('.screenshot.thumbnail a.fullsize').on('click', function(){
                 console.log('WTF IS THIS');
                 var $this = $(this),

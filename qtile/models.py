@@ -24,14 +24,14 @@ class Model(object):
 
     @classmethod
     def raw(cls):
-        ''' Load a YAML fixture and return the raw data '''
-        path = os.path.join(settings.BASE_DIR, 'data/{0}.yaml'.format(cls.__name__))
-        results = yaml.safe_load(open(path, 'r').read())
+        """Load a YAML fixture and return the raw data"""
+        path = os.path.join(settings.BASE_DIR, "data/{0}.yaml".format(cls.__name__))
+        results = yaml.safe_load(open(path, "r").read())
         return results
 
     @classmethod
     def load(cls):
-        ''' Load the data and return a list of model instances '''
+        """Load the data and return a list of model instances"""
         results = [cls(item) for item in cls.raw()]
         if cls.order:
             results.sort(key=lambda i: getattr(i, cls.order))
@@ -39,18 +39,18 @@ class Model(object):
 
 
 class Screenshot(Model):
-    order = 'name'
+    order = "name"
 
     def __init__(self, data):
         super().__init__(data)
-        self._data['image'] = Path(self._data['image'])
+        self._data["image"] = Path(self._data["image"])
         print(self.name, self.screens)
 
     @cached_property
     def img(self):
         img = Image.open(self.path)
-        if img.mode not in ('L', 'RGB'):
-            img = img.convert('RGB')
+        if img.mode not in ("L", "RGB"):
+            img = img.convert("RGB")
         return img
 
     @cached_property
@@ -74,7 +74,7 @@ class Screenshot(Model):
 
     @cached_property
     def thumbnail(self):
-        return Path(self.image.parent, 'thumb', self.name)
+        return Path(self.image.parent, "thumb", self.name)
 
 
 class Video(Model):

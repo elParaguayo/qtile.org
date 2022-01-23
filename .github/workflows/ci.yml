@@ -1,0 +1,40 @@
+name: ci
+
+on:
+    push:
+    pull_request:
+
+jobs:
+    build:
+        runs-on: ubuntu-20.04
+        name: "python ${{ matrix.python-version }}"
+        env:
+          PYTHON: "3.10"
+        steps:
+            - uses: actions/checkout@v2
+            - name: Set up python $PYTHON
+              uses: actions/setup-python@v2
+              with:
+                  python-version: $PYTHON
+            - name: Install dependencies
+              run: |
+                sudo apt update
+                sudo apt install --no-install-recommends \
+                  bower imagemagick npm
+            - name: Install python packages
+              run: pip -q install -r requirements.txt
+            - name: Install web components
+              run: |
+                sudo npm install less -g
+                bower update
+            - name: Build screenshots
+            - name: Build site
+
+
+    publish:
+        name: Publish Site
+        needs: build
+        runs-on: ubuntu-20.04
+        steps:
+            - name: Push to branch
+

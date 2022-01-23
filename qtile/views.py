@@ -6,36 +6,39 @@ from . import models
 
 
 class Index(vanilla.TemplateView):
-    template_name = 'pages/index.html'
+    template_name = "pages/index.html"
 
     def get_context_data(self, **kwargs):
         context = super(Index, self).get_context_data(**kwargs)
-        context.update({
-            'screenshots': sorted(models.Screenshot.load(),
-                key=lambda x: random.random())[:4],
-            'homepage': True,
-        })
+        context.update(
+            {
+                "screenshots": sorted(
+                    models.Screenshot.load(), key=lambda x: random.random()
+                )[:4],
+                "homepage": True,
+            }
+        )
 
         return context
 
 
 class Screenshots(vanilla.TemplateView):
-    template_name = 'pages/screenshots.html'
+    template_name = "pages/screenshots.html"
 
     def get_context_data(self, **kwargs):
         context = super(Screenshots, self).get_context_data(**kwargs)
-        context['screenshots'] = models.Screenshot.load()
+        context["screenshots"] = models.Screenshot.load()
         return context
 
 
 class Videos(vanilla.TemplateView):
-    template_name = 'pages/videos.html'
+    template_name = "pages/videos.html"
 
     def get_context_data(self, **kwargs):
         context = super(Videos, self).get_context_data(**kwargs)
-        context['videos'] = models.Video.raw()
+        context["videos"] = models.Video.raw()
         return context
 
 
 class Download(vanilla.TemplateView):
-    template_name = 'pages/download.html'
+    template_name = "pages/download.html"

@@ -1,0 +1,138 @@
+
+<!DOCTYPE html>
+<html lang="{% block html_lang %}{{ DEFAULT_LANG }}{% endblock html_lang %}">
+<head>
+  {% block head %}
+  <meta charset="utf-8">
+  <meta http-equiv="X-UA-Compatible" content="IE=edge">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+
+  <title>Qtile &ndash; A hackable tiling window manager written in Python| Qtile.org</title>
+
+  <link href="//netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Compress our css files. Definition of bunde in pelicanconf.WEBASSETS_BUNDLES -->
+  {% assets 'qtile_css' %}
+    <link type="text/css" rel="stylesheet" href="{{ SITEURL }}/{{ ASSET_URL }}" />
+  {% endassets %}
+
+  <!-- Compress our js files. Definition of bunde in pelicanconf.WEBASSETS_BUNDLES -->
+  {% assets 'qtile_js' %}
+    <script type="text/javascript" src="{{ SITEURL }}/{{ ASSET_URL }}" ></script>
+  {% endassets %}
+
+  <!-- Latest compiled and minified CSS -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap.min.css" integrity="sha384-HSMxcRTRxnN+Bdg0JdbxYKrThecOKuH5zCYotlSAcp1+c8xmyTe9GYg1l9a69psu" crossorigin="anonymous">
+
+<!-- Optional theme -->
+<link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/css/bootstrap-theme.min.css" integrity="sha384-6pzBo3FDv/PJ8r2KRkGHifhEocL+1X2rVCTTkUfGk7/0pbek5mMa1upzvWbrUbOZ" crossorigin="anonymous">
+
+<!-- Latest compiled and minified JavaScript -->
+<script src="https://stackpath.bootstrapcdn.com/bootstrap/3.4.1/js/bootstrap.min.js" integrity="sha384-aJ21OjlMXNL5UyIl/XNwTMqvzeRMZH2w8c5cRVpzpU8Y5bApTppSuUkhZXN0VxHd" crossorigin="anonymous"></script>
+  <!-- <script type="text/javascript" src="{% static 'jquery/dist/jquery.min.js' %}"></script>
+    'bootstrap/js/modal.js', 'bootstrap/js/collapse.js',  'bootstrap/js/tooltip.js', 'imagesloaded/imagesloaded.pkgd.min.js', 'masonry/dist/masonry.pkgd.min.js',
+  <script type="text/javascript">-->
+
+
+  {% block extrahead %}{% endblock %}     
+  {% endblock head %}
+</head>
+
+<body id="index" class="index">
+
+  <div class="navbar navbar-inverse navbar-static-top" role="navigation">
+    <div class="container">
+        <div class="navbar-header">
+            <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                <span class="sr-only">Toggle navigation</span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </button>
+            <a class="navbar-brand qtile-brand" href="i">
+                <span class="fa fa-power-off"></span>tile
+            </a>
+        </div>
+        <div class="collapse navbar-collapse">
+            <ul class="nav navbar-nav">
+
+                <li class="}">
+                    <a href="d"><span class="fa fa-lg fa-fw fa-download"></span> Download</a>
+                </li>
+
+                <li class="">
+                    <a href="s"><span class="fa fa-lg fa-fw fa-columns"></span> Screenshots</a>
+                </li>
+                <li class="">
+                    <a href="v"><span class="fa fa-lg fa-fw fa-play-circle"></span> Videos</a>
+                </li>
+                <li><a href="http://docs.qtile.org/"><span class="fa fa-lg fa-fw fa-book"></span> Documentation</a></li>
+                <li><a href="https://github.com/qtile/qtile/issues"><span class="fa fa-lg fa-fw fa-bug"></span> Issues</a></li>
+                <li><a href="https://github.com/qtile/qtile"><span class="fa fa-lg fa-fw fa-github"></span> GitHub</a></li>
+            </ul>
+
+            <div class="navbar-right current-release">
+                <span>Current Release: <b>{{ QTILE.TAG }}, {{ QTILE.RELEASE_DATE.strftime("%b. %d, %Y") }}</b></span><br />
+                <ul class="list-inline small">
+                    <li><a href="d">Download</a></li>
+                    <li><a href="https://github.com/qtile/qtile/blob/master/CHANGELOG">Release Notes</a></li>
+                    <li><a href="http://docs.qtile.org/en/latest/manual/install/">Install Guide</a></li>
+                </ul>
+            </div>
+        </div>
+    </div>
+</div>
+
+        {% block main %}
+        <!-- <div class="container"> -->
+            {% block content %}{% endblock %}
+        <!-- </div> -->
+    {% endblock %}
+
+    <footer class="container text-right">
+        <hr />
+        <ul class="list-inline">
+            <li>
+                <a href="https://github.com/qtile/qtile/graphs/contributors"
+                    data-toggle="tooltip" data-placement="top"
+                    title="Qtile is made with love by folks from around the world"
+                    >
+                    <span class="fa fa-lg fa-heart-o"></span>
+                </a>
+            </li>
+            <li>
+                <a href="https://github.com/qtile/qtile.org"
+                    data-toggle="tooltip" data-placement="top"
+                    title="Fork this site on GitHub"
+                    >
+                    <span class="fa fa-lg fa-github"></span>
+                </a>
+            </li>
+            <li>
+                <a href="http://python.org/">
+                    <img src="https://www.python.org/static/community_logos/python-powered-w-70x28.png" alt="Python Powered">
+                </a>
+            </li>
+        </ul>
+    </footer>
+
+
+
+    <div id="lightbox" class="modal">
+        <div class="modal-dialog modal-lg">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <button type="button" class="close" data-dismiss="modal">
+                        <span aria-hidden="true">&times;</span><span class="sr-only">Close</span>
+                    </button>
+                    <h4 class="modal-title"></h4>
+                </div>
+                <div class="modal-body"></div>
+                <div class="modal-footer"></div>
+            </div>
+        </div>
+    </div>
+
+
+</body>
+</html>

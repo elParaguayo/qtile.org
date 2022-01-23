@@ -7,6 +7,7 @@ __pycache__/
 
 # Distribution / packaging
 .Python
+venv/
 env/
 build/
 develop-eggs/
@@ -53,3 +54,6 @@ docs/_build/
 target/*.pyc
 
 public/
+
+# Pelican documentation
+output/

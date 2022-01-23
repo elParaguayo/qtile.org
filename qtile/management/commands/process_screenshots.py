@@ -24,8 +24,8 @@ class Command(BaseCommand):
 
             # Save the thumbnail to a tmpfile
             fd, tmp = tempfile.mkstemp()
-            file = os.fdopen(fd, 'w+b')
-            type = mimetypes.guess_type(screenshot.name)[0].split('/')[1]
+            file = os.fdopen(fd, "w+b")
+            type = mimetypes.guess_type(screenshot.name)[0].split("/")[1]
             img.save(file, type)
             file.close()
 
@@ -34,7 +34,7 @@ class Command(BaseCommand):
                 staticfiles_storage.delete(screenshot.thumbnail)
 
             # save thumbnail to stattic dir
-            file = File(open(tmp, 'rb'))
+            file = File(open(tmp, "rb"))
             staticfiles_storage.save(screenshot.thumbnail, file)
             file.close()
             os.unlink(tmp)

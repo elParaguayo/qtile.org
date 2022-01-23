@@ -1,8 +1,8 @@
 {% load static %}
 <div class="screenshot thumbnail">
     <a href="{% static screenshot.image %}" class="fullsize"
-        data-title="{{ screenshot.name }}"
-        data-config="{{ screenshot.config|default_if_none:'' }}">
+        data-title="{{ screenshot['image'] }}"
+        data-config="config">
         <img src="{% static screenshot.thumbnail %}" class="img-responsive" />
     </a>
     {% if show_config and screenshot.config %}
