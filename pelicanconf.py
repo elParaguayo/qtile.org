@@ -90,7 +90,11 @@ WEBASSETS = True
 
 JINJA_ENVIRONMENT = {"extensions": [DummyExtension, DefaultConfig]}
 
-STATIC_PATHS = ["public"]
+TEMPLATE_PAGES = {
+    "screenshots.html": "screenshots/index.html"
+}
+
+#STATIC_PATHS = ["public"]
 
 WEBASSETS_BUNDLES = (
     (
@@ -113,18 +117,13 @@ WEBASSETS_BUNDLES = (
     (
         "qtile_css",
         (
-            "../../../public/bower_components/fontawesome/less/font-awesome.less",
-            "../../../public/bower_components/bootstrap/less/bootstrap.less",
-            "less/qtile.less",
-            "css/pygments.css",
-            # "css/qtile.css",
+            "css/qtile.css",
             "https://fonts.googleapis.com/css?family=Open+Sans:400italic,700italic,400,700",
             "https://fonts.googleapis.com/css?family=Varela+Round",
+            # "https://netdna.bootstrapcdn.com/font-awesome/4.1.0/css/font-awesome.min.css"
         ),
-        {"filters": "less,cssutils", "output": "css/qtile.min.css"},
+        {"filters": "cssutils", "output": "css/qtile.min.css"},
     )
 )
 # Uncomment following line if you want document-relative URLs when developing
 # RELATIVE_URLS = True
-LESS_BIN = "/home/anto/node_modules/less/bin/lessc"
-

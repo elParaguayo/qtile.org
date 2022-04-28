@@ -27,7 +27,7 @@ for shot in shots:
         image = Image.open(screenshots_dir / img)
     except IOError:
         continue
-    image.thumbnail((200, 200))
+    image.thumbnail((300, 300))
     thumb_name = img.parent / "thumbnails" / img.name
     image.save(screenshots_dir / thumb_name)
     shot["thumbnail"] = thumb_name.as_posix()
